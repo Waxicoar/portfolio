@@ -4,6 +4,12 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
+const BASE_PATH =
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1"
+    ? "/"
+    : "/portfolio/";
+
 let pages = [
   { url: "", title: "Home" },
   { url: "projects/", title: "Projects" },
@@ -15,18 +21,20 @@ let pages = [
 let nav = document.createElement("nav");
 document.body.prepend(nav);
 
-// Resolve URLs relative to the directory containing global.js
-const SITE_ROOT = new URL("./", import.meta.url);
-
 for (let p of pages) {
+  let url = p.url;
+
+  if (!url.startsWith("http")) {
+    url = BASE_PATH + url;
+  }
+
   let a = document.createElement("a");
-  a.href = new URL(p.url, SITE_ROOT).href;
+  a.href = url;
   a.textContent = p.title;
 
   if (
     a.host === location.host &&
-    a.pathname.replace(/\/$/, "") ===
-      location.pathname.replace(/\/$/, "")
+    a.pathname === location.pathname
   ) {
     a.classList.add("current");
   }
