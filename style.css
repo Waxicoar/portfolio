@@ -186,3 +186,23 @@ body:has(nav a[href="index.html"]) > section li {
 body:has(nav a[href="index.html"]) > section li::marker {
   color: var(--color-accent);
 }
+
+:root {
+  color-scheme: light dark;
+}
+
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom-color: var(--border-color);
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
+label.color-scheme select {
+  font-family: inherit;
+}
