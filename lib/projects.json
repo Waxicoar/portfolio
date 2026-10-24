@@ -2,7 +2,7 @@
     {
         "title": "Diabete modeling",
         "year": "2026",
-        "image": "../image/2.png",
+        "image": "/portfolio/image/2.png",
         "description": "Built a predictive model using Python."
     },
     {
