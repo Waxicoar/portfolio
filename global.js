@@ -150,3 +150,9 @@ export function renderProjects(
     containerElement.appendChild(article);
   }
 }
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(
+    `https://api.github.com/users/${encodeURIComponent(username)}`
+  );
+}
