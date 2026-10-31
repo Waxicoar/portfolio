@@ -300,3 +300,33 @@ label.color-scheme select {
 
   overflow: visible;
 }
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+#projects-pie-plot path.selected {
+  fill: var(--color);
+}
+
+.legend-item.selected {
+  font-weight: bold;
+}
+
+.legend-item.selected .swatch {
+  background: var(--color);
+}
+
+/* Make legend entries clickable */
+.legend-item {
+  cursor: pointer;
+}
