@@ -206,3 +206,10 @@ label.color-scheme {
 label.color-scheme select {
   font-family: inherit;
 }
+
+.project-year {
+  color: gray;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-size: 0.9em;
+}

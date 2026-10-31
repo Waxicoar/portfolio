@@ -108,13 +108,11 @@ export function renderProjects(
   headingLevel = 'h2'
 ) {
   if (!containerElement) {
-    console.error('Projects container was not found.');
+    console.error('Projects container not found.');
     return;
   }
 
   containerElement.innerHTML = '';
-
-  const projectList = Array.isArray(projects) ? projects : [];
 
   const validHeading = /^h[1-6]$/i.test(headingLevel)
     ? headingLevel.toLowerCase()
@@ -123,29 +121,31 @@ export function renderProjects(
   const titleElement = document.querySelector('.projects-title');
 
   if (titleElement) {
-    titleElement.textContent = `Projects (${projectList.length})`;
+    titleElement.textContent = `Projects (${projects.length})`;
   }
 
-  if (projectList.length === 0) {
-    containerElement.textContent = 'No projects to display yet.';
-    return;
-  }
-
-  for (const project of projectList) {
-    const item = project || {};
-
-    const title = item.title || 'Untitled project';
-    const image = item.image || '';
-    const description =
-      item.description || 'No description available.';
-
+  for (const project of projects) {
     const article = document.createElement('article');
 
-    article.innerHTML = `
-      <${validHeading}>${title}</${validHeading}>
-      ${image ? `<img src="${image}" alt="${title}">` : ''}
-      <p>${description}</p>
-    `;
+    const heading = document.createElement(validHeading);
+    heading.textContent = project.title;
+
+    const image = document.createElement('img');
+    image.src = project.image;
+    image.alt = project.title;
+
+    const details = document.createElement('div');
+    details.className = 'project-details';
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
+    const year = document.createElement('p');
+    year.className = 'project-year';
+    year.textContent = project.year;
+
+    details.append(description, year);
+    article.append(heading, image, details);
 
     containerElement.appendChild(article);
   }
