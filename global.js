@@ -16,6 +16,7 @@ let pages = [
   { url: "contact/", title: "Contact" },
   { url: "profile/", title: "Profile" },
   { url: "https://github.com/Waxicoar", title: "GitHub" },
+  { url: "meta/", title: "Meta" },
 ];
 
 let nav = document.createElement("nav");

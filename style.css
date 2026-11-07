@@ -1,7 +1,4 @@
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
   max-width: 100ch;
   margin-inline: auto;
   padding-inline: 1em;
@@ -326,7 +323,123 @@ label.color-scheme select {
   background: var(--color);
 }
 
-/* Make legend entries clickable */
 .legend-item {
   cursor: pointer;
+}
+
+#stats .stats,
+#language-breakdown.stats {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.75rem 1.5rem;
+
+  margin: 1rem 0;
+  padding: 1rem;
+
+  border: 1px solid #888;
+  border-radius: 0.5rem;
+}
+
+#stats dt,
+#language-breakdown dt {
+  font-weight: normal;
+  opacity: 0.7;
+}
+
+#stats dd,
+#language-breakdown dd {
+  margin: 0;
+  font-weight: bold;
+}
+
+#chart {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+#chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#chart .gridlines line {
+  stroke: #999;
+  stroke-opacity: 0.25;
+}
+
+#chart .gridlines .domain {
+  display: none;
+}
+
+#chart .dots circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#chart .dots circle:hover {
+  transform: scale(1.5);
+}
+
+#chart .dots circle.selected {
+  fill: #ff6b6b;
+  stroke: white;
+  stroke-width: 1.5;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+
+  transition: opacity 200ms, visibility 200ms;
+}
+
+dl.info dt {
+  opacity: 0.7;
+}
+
+dl.info dd {
+  margin: 0;
+}
+
+#commit-tooltip {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+
+  padding: 1rem;
+  margin: 0;
+
+  background: Canvas;
+  color: CanvasText;
+
+  border: 1px solid #888;
+  border-radius: 0.5rem;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+  pointer-events: none;
+}
+
+#commit-tooltip[hidden] {
+  display: grid;
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+#chart .selection {
+  fill-opacity: 0.1;
+  stroke: currentColor;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
 }
