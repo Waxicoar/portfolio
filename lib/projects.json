@@ -1,5 +1,12 @@
 [
     {
+        "title": "Bikewatching",
+        "year": "2026",
+        "image": "image/bikewatching.jpg",
+        "description": "Explore March 2024 Bluebikes traffic by time of day and bike lanes across Boston and Cambridge.",
+        "url": "https://waxicoar.github.io/bikewatching/"
+    },
+    {
         "title": "Diabete modeling",
         "year": "2026",
         "image": "/portfolio/image/2.png",

@@ -130,9 +130,18 @@ export function renderProjects(
 
     const heading = document.createElement(validHeading);
     heading.textContent = project.title;
+    if (project.url) {
+      const link = document.createElement('a');
+      link.href = new URL(project.url, new URL(BASE_PATH, location.origin));
+      link.textContent = project.title;
+      heading.replaceChildren(link);
+    }
 
     const image = document.createElement('img');
     image.src = project.image;
+    if (project.url && !project.image.startsWith('/')) {
+      image.src = new URL(project.image, new URL(BASE_PATH, location.origin));
+    }
     image.alt = project.title;
 
     const details = document.createElement('div');
