@@ -8,6 +8,7 @@
   <script type="module" src="main.js"></script>
 
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="meta.css">
 
   <title>Codebase Meta Analysis</title>
 </head>
@@ -16,16 +17,33 @@
   <h1>Codebase Meta Analysis</h1>
   <p>Statistics and visualizations of my portfolio's Git history.</p>
 
+  <section id="timeline-controls">
+    <label for="commit-progress">Show commits until:</label>
+    <input id="commit-progress" type="range" min="0" max="100" value="100">
+    <time id="commit-time"></time>
+  </section>
+
   <h2>Summary Statistics</h2>
   <div id="stats"></div>
 
-  <h2>Commits by Time of Day</h2>
-  <div id="chart"></div>
+  <h2>Commits over time</h2>
+  <div id="scrolly-1">
+    <div id="scatter-story"></div>
+    <div id="scatter-plot">
+      <div id="chart"></div>
 
-  <p id="selection-count">No commits selected</p>
+      <p id="selection-count">No commits selected</p>
 
-  <h2>Selected Commit Languages</h2>
-  <dl id="language-breakdown" class="stats"></dl>
+      <h2>Selected Commit Languages</h2>
+      <dl id="language-breakdown" class="stats"></dl>
+    </div>
+  </div>
+
+  <section id="file-race">
+    <h2>Race for the biggest files</h2>
+    <p>Each dot represents one line in a file. Dot colors distinguish programming languages.</p>
+    <dl id="files"></dl>
+  </section>
 
   <dl id="commit-tooltip" class="info tooltip" hidden>
     <dt>Commit</dt>
